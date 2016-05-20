@@ -1,0 +1,49 @@
+{
+  "name": "tracey",
+  "version": "1.0.0",
+  "description": "Simple ui for tracing searches in isearch ui",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run coverage",
+    "nocov": "npm run lint && mocha test/**/*.test.js --compilers js:babel-register",
+    "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha index.test.js --report lcovonly -- -R spec",
+    "dev:build": "webpack --progress",
+    "dev:serve": "webpack-dev-server --hot --inline",
+    "lint": "semistandard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/numo-labs/tracey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/numo-labs/tracey/issues"
+  },
+  "homepage": "https://github.com/numo-labs/tracey#readme",
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "expect": "^1.20.1",
+    "file-loader": "^0.8.5",
+    "jsdom": "^9.1.0",
+    "material-ui": "^0.15.0",
+    "mocha": "^2.4.5",
+    "mocha-jsdom": "^1.1.0",
+    "react": "^15.0.2",
+    "react-addons-test-utils": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-hot-loader": "^1.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "semistandard": "^8.0.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
