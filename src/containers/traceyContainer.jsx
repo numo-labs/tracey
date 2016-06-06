@@ -1,15 +1,15 @@
-import React from 'react';
+import { connect } from 'react-redux';
 import Tracey from '../components/tracey';
+import * as Actions from '../actions/results';
 
-// Get theme setup for material-ui
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import theme from '../components/theme';
+const mapStateToProps = (state) => {
+  const { results: { id, queries, tiles, hotels } } = state;
+  return {
+    id,
+    queries,
+    tiles,
+    hotels
+  };
+};
 
-const TraceyContainer = () => (
-  <MuiThemeProvider muiTheme={theme}>
-    <Tracey />
-  </MuiThemeProvider>
-
-);
-
-export default TraceyContainer;
+export default connect(mapStateToProps, Actions)(Tracey);
