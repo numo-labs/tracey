@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory, RouteHandler } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import Header from '../header';
 

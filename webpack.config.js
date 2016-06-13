@@ -1,15 +1,19 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
-  entry: {
-    javascript: './src/app.js',
-    html: './src/index.html'
-  },
-  output: {
-    filename: 'app.js',
-    path: __dirname + '/dist'
-  },
+  entry: './src/app.js',
+  output: {path: 'dist', filename: 'bundle-[hash:6].js'},
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  plugins: [
+    new ExtractTextPlugin('common-[hash:6].css', { allChunks: true }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/index.template.html'
+    })
+  ],
   module: {
     loaders: [
       {
@@ -18,10 +22,9 @@ module.exports = {
         loaders: ['react-hot', 'babel']
       },
       {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      { test: /\.css$/, loader: 'style-loader!css-loader' }
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      }
     ]
   }
 };

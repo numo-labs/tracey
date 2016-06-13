@@ -7,8 +7,8 @@ import fetch from 'isomorphic-fetch';
 * Need to specify the content-type as 'application/json' in the request header.
 **/
 
-export const query = (query, variables) => {
-  return fetch('https://f0uih51vu0.execute-api.eu-west-1.amazonaws.com/ci/graphql', {
+export const query = (query, variables, env) => {
+  return fetch(`https://f0uih51vu0.execute-api.eu-west-1.amazonaws.com/${env}/graphql`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

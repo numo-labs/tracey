@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 
-const Header = ({search}) => (
+const Header = ({search, environment, changeEnvironment}) => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -15,7 +15,7 @@ const Header = ({search}) => (
     </Navbar.Header>
     <Nav>
       <NavItem>
-        <Searchbar onSubmit={(value) => search(value)} />
+        <Searchbar onSubmit={(value, env) => search(value, env)} />
       </NavItem>
     </Nav>
   </Navbar>

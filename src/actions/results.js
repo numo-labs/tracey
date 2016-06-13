@@ -17,10 +17,10 @@ const update = (id, queries, result) => ({
 /**
  * Searches for information based on the search id.
  */
-export const search = (searchId) => {
+export const search = (searchId, env) => {
   return (dispatch) => {
     console.log('searching for ', searchId);
-    query(SEARCH, { searchId }).then(json => {
+    query(SEARCH, { searchId }, env).then(json => {
       const { id, queries, results } = json.data.tracing.search;
       dispatch(update(id, queries, resultMapper(results)));
     });
