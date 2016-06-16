@@ -1,7 +1,8 @@
 const map = (results) => {
   const returnObject = {
     tiles: [],
-    hotels: []
+    hotels: [],
+    raw: results.raw
   };
 
   results.forEach(result => {

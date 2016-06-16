@@ -2,16 +2,18 @@ import { query } from '../services/graphql';
 import { UPDATE_SEARCH_RESULT } from '../constants/actions';
 import { SEARCH } from '../constants/queries';
 import resultMapper from '../services/resultMapper';
+import copy from 'deepcopy';
 
 /**
  * Pushed the search result onto the state.
  */
-const update = (id, queries, result) => ({
+const update = (id, queries, result, raw) => ({
   type: UPDATE_SEARCH_RESULT,
   id,
   queries,
   tiles: result.tiles,
-  hotels: result.hotels
+  hotels: result.hotels,
+  raw: raw
 });
 
 /**
@@ -22,7 +24,8 @@ export const search = (searchId, env) => {
     console.log('searching for ', searchId);
     query(SEARCH, { searchId }, env).then(json => {
       const { id, queries, results } = json.data.tracing.search;
-      dispatch(update(id, queries, resultMapper(results)));
+      const raw = copy(results);
+      dispatch(update(id, queries, resultMapper(results), raw));
     });
   };
 };

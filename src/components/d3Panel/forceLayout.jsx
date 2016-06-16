@@ -42,9 +42,9 @@ class ForceLayout extends React.Component {
       .nodes(nodes)
       .links(links)
       .size([width, height])
-       .charge(-2000)
-       .linkDistance(1)
-       .linkStrength(1)
+      .charge(-2000)
+      .linkDistance(1)
+      .linkStrength(1)
       .start();
 
     const edges = svg.selectAll('line')
@@ -83,21 +83,21 @@ class ForceLayout extends React.Component {
       })
       .call(force.drag);
 
-      force.on("tick", function() {
-       edges.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
-       node.attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; })
-       texts.attr("transform", function(d) {
-                return "translate(" + d.x + "," + d.y + ")";
-                });
+    force.on('tick', function () {
+      edges.attr('x1', function (d) { return d.source.x; })
+        .attr('y1', function (d) { return d.source.y; })
+        .attr('x2', function (d) { return d.target.x; })
+        .attr('y2', function (d) { return d.target.y; });
+      node.attr('cx', function (d) { return d.x; })
+        .attr('cy', function (d) { return d.y; });
+      texts.attr('transform', function (d) {
+        return 'translate(' + d.x + ',' + d.y + ')';
+      });
 
-                edgesText
-   .attr("x", function(d) { return (d.source.x + (d.target.x - d.source.x) * 0.5); })
-   .attr("y", function(d) { return (d.source.y + (d.target.y - d.source.y) * 0.5); });
-       });
+      edgesText
+        .attr('x', function (d) { return (d.source.x + (d.target.x - d.source.x) * 0.5); })
+        .attr('y', function (d) { return (d.source.y + (d.target.y - d.source.y) * 0.5); });
+    });
   }
 
   componentDidMount () {
