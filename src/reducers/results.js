@@ -4,7 +4,8 @@ const initialState = {
   id: '',
   queries: [],
   tiles: [],
-  hotels: []
+  hotels: [],
+  raw: {}
 };
 
 const results = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const results = (state = initialState, action) => {
         id: action.id,
         queries: action.queries,
         tiles: action.tiles,
-        hotels: action.hotels
+        hotels: action.hotels,
+        raw: action.raw
       };
     }
     default: return state;

@@ -8,6 +8,12 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import Grid from 'react-bootstrap/lib/Grid';
 import Badge from 'react-bootstrap/lib/Badge';
 
+const key_enum = [
+  'info',
+  'hotels',
+  'tiles'
+];
+
 class Tracey extends React.Component {
   constructor (props) {
     super(props);
@@ -19,15 +25,16 @@ class Tracey extends React.Component {
 
   handleTabSelection (key) {
     this.setState({tab_active_key: key});
-    browserHistory.push(`/detail/${key === 1 ? 'hotels' : 'tiles'}`);
+    browserHistory.push(`/detail/${key_enum[key]}`);
   }
 
   renderTabs (hotels, tiles) {
+    console.log(hotels);
     if (Boolean(hotels.length) || Boolean(tiles.length)) {
       return (
         <Nav bsStyle='pills' activeKey={this.state.tab_active_key} onSelect={this.handleTabSelection}>
           <NavItem eventKey={0}>
-            General information
+            General information <Badge>{hotels.length + tiles.length}</Badge>
           </NavItem>
           <NavItem eventKey={1}>
             hotels <Badge>{hotels.length}</Badge>

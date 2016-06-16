@@ -7,6 +7,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import TraceyContainer from './traceyContainer';
 import DetailPageContainer from './detailPageContainer';
 import D3PanelContainer from './d3PanelContainer';
+import OverviewContainer from './overviewContainer';
 
 // Store
 import configureStore from '../store/configure-store';
@@ -19,6 +20,7 @@ class Root extends React.Component {
       <Provider store={store}>
         <Router history={syncedHistory}>
           <Route path='/' component={TraceyContainer} ignoreScrollBehavior>
+            <Route path='detail/info' component={OverviewContainer} />
             <Route path='detail/:items' component={DetailPageContainer}>
               <Route path='item/:itemIndex' component={D3PanelContainer} />
             </Route>
