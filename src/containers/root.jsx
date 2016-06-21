@@ -4,7 +4,7 @@ import {Router, Route, browserHistory, ignoreScrollBehavior} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux';
 
 // Components
-import TraceyContainer from './traceyContainer';
+import Entry from './entry.js';
 import DetailPageContainer from './detailPageContainer';
 import D3PanelContainer from './d3PanelContainer';
 import OverviewContainer from './overviewContainer';
@@ -19,7 +19,7 @@ class Root extends React.Component {
     return (
       <Provider store={store}>
         <Router history={syncedHistory}>
-          <Route path='/' component={TraceyContainer} ignoreScrollBehavior>
+          <Route path='/' component={Entry} ignoreScrollBehavior>
             <Route path='detail/info' component={OverviewContainer} />
             <Route path='detail/:items' component={DetailPageContainer}>
               <Route path='item/:itemIndex' component={D3PanelContainer} />
