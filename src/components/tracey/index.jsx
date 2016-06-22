@@ -29,7 +29,6 @@ class Tracey extends React.Component {
   }
 
   renderTabs (hotels, tiles) {
-    console.log(hotels);
     if (Boolean(hotels.length) || Boolean(tiles.length)) {
       return (
         <Nav bsStyle='pills' activeKey={this.state.tab_active_key} onSelect={this.handleTabSelection}>
@@ -48,7 +47,8 @@ class Tracey extends React.Component {
   }
 
   render () {
-    const {hotels, tiles} = this.props;
+    const { hotels, tiles } = this.props;
+    console.log('RESULTS', hotels, tiles);
     return (<div>
       <Header search={this.props.search} />
       <Grid>
@@ -56,7 +56,6 @@ class Tracey extends React.Component {
         <br />
         {this.props.children}
       </Grid>
-
     </div>);
   }
 }

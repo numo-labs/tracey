@@ -16,18 +16,16 @@ export class Entry extends Component {
   }
 
   showLock () {
-    let idToken = localStorage.getItem('userToken');
     this.lock.show((err, profile, token) => {
       if (err) {
         console.log('Error signing in', err);
         return null;
-      } else if (!idToken) {
-        idToken = token;
-        localStorage.setItem('userToken', idToken);
+      } else {
+        localStorage.setItem('userToken', token);
       }
       if (profile.app_metadata.tracey) { // permissions exist and read permission exists
         console.log('permissions', profile.app_metadata.tracey);
-        this.props.savePermissions(idToken);
+        this.props.savePermissions(token);
       } else {
         this.props.setLoginError();
       }

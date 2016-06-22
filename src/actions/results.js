@@ -24,6 +24,7 @@ export const search = (searchId, env) => {
     console.log('searching for ', searchId);
     query(SEARCH, { searchId }, env).then(json => {
       const { id, queries, results } = json.data.tracing.search;
+      console.log('results', json.data.tracing.search.results );
       const raw = copy(results);
       dispatch(update(id, queries, resultMapper(results), raw));
     });
