@@ -15,11 +15,15 @@ const propTypes = {
 class Searchbar extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {search_field_value: '', env: 'ci'};
+    this.state = {search_field_value: window.location.hash.split('/')[1] || '', env: 'ci'};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleEnterOnInputField = this.handleEnterOnInputField.bind(this);
     this.handleChangeEnvironment = this.handleChangeEnvironment.bind(this);
+
+    if (this.state.search_field_value) {
+      this.props.onSubmit(this.state.search_field_value, this.state.env);
+    }
   }
 
   handleSubmit () {
