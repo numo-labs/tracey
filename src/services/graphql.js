@@ -12,7 +12,8 @@ export const query = (query, variables, env) => {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': 'Bearer ' + localStorage.getItem('userToken')
     },
     body: JSON.stringify({ 'query': query, 'variables': JSON.stringify(variables) })
   })
