@@ -24,14 +24,6 @@ class Root extends Component {
       loggedIn: false,
       error: false
     };
-    let token = localStorage.getItem('userToken');
-    if (token) {
-      this.state = {
-        token,
-        loggedIn: true,
-        error: false
-      };
-    }
     this.showLock = this.showLock.bind(this);
   }
 
