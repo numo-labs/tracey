@@ -23,7 +23,7 @@ class ForceLayout extends React.Component {
                   id : node.id,
                   label : node.properties.name,
                   weight : 1,
-                  nodeType: node.properties.nodeType
+                  nodeType: node.properties.nodeType + ':' + node.properties.nodeSubType
               };
 
               if (graph.nodes.findIndex(function (n) { return n.id === node.id }) > -1) {
@@ -67,7 +67,7 @@ class ForceLayout extends React.Component {
 
       return graph;
     }
-    const color = d3.scale.category10().domain(['geo', 'hotel', 'marketing', 'tile']);
+    const color = d3.scale.category10().domain(['geo:geonames', 'hotel:mhid', 'marketing', 'tile:article']);
 
     const svg = d3.select(this.refs.mountPoint)
       .append('svg')
